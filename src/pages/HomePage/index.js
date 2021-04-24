@@ -1,53 +1,68 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Avatar from "../../components/Avatar";
-import { Label } from "../../components/Label";
-import { Input } from "../../components/Input";
-import { Datepicker } from "../../components/Datepicker";
 import {
   AvatarNameBlock,
   HomeWrapper,
   FullNameBlock,
   FirstNameBlock,
+  NameLabel,
+  NameInput,
   LastNameBlock,
   DobGenderBlock,
   DobBlock,
   DobLabel,
+  DobPicker,
   GenderBlock,
   GenderLabel,
+  Select,
 } from "./style";
 
 const HomePage = () => {
+  const userInfo = useSelector((state) => state.userInfo);
   return (
-    <HomeWrapper>
-      <AvatarNameBlock>
-        {/* <Avatar /> */}
-        <FullNameBlock>
-          <FirstNameBlock>
-            <Label htmlFor='firstName'>First Name</Label>
-            <Input id='firstName' type='text' placeholder='First Name' />
-          </FirstNameBlock>
-          <LastNameBlock>
-            <Label htmlFor='lastName'>Last Name*</Label>
-            <Input id='lastName' type='text' placeholder='Last Name' />
-          </LastNameBlock>
-        </FullNameBlock>
-      </AvatarNameBlock>
-      <DobGenderBlock>
-        <DobBlock>
-          <DobLabel htmlFor='dob'>Date Of Birth</DobLabel>
-          <Datepicker />
-        </DobBlock>
-        <GenderBlock>
-          <GenderLabel htmlFor='gender'>Gender</GenderLabel>
-          <select>
-            <option value='0'>select</option>
-            <option value='1'>Male</option>
-            <option value='2'>Famale</option>
-            <option value='3'>Prefer not to say</option>
-          </select>
-        </GenderBlock>
-      </DobGenderBlock>
-    </HomeWrapper>
+    userInfo && (
+      <HomeWrapper>
+        <AvatarNameBlock>
+          <Avatar avatarUrl={userInfo.avatarUrl} />
+          <FullNameBlock>
+            <FirstNameBlock>
+              <NameLabel htmlFor='firstName'>First Name</NameLabel>
+              <NameInput
+                id='firstName'
+                type='text'
+                placeholder='First Name'
+                defaultValue={userInfo.firstName}
+              />
+            </FirstNameBlock>
+            <LastNameBlock>
+              <NameLabel htmlFor='lastName'>Last Name*</NameLabel>
+              <NameInput
+                id='lastName'
+                type='text'
+                placeholder='Last Name'
+                defaultValue={userInfo.lastName}
+              />
+            </LastNameBlock>
+          </FullNameBlock>
+        </AvatarNameBlock>
+        <DobGenderBlock>
+          <DobBlock>
+            <DobLabel htmlFor='dob'>Date Of Birth</DobLabel>
+            <DobPicker />
+          </DobBlock>
+          <GenderBlock>
+            <GenderLabel htmlFor='gender'>Gender</GenderLabel>
+            <Select>
+              <option value='0'>select</option>
+              <option value='1'>Male</option>
+              <option value='2'>Famale</option>
+              <option value='3'>Prefer not to say</option>
+            </Select>
+          </GenderBlock>
+        </DobGenderBlock>
+      </HomeWrapper>
+    )
   );
 };
 

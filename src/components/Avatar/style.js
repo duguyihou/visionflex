@@ -1,8 +1,15 @@
 import styled from "styled-components";
 import placeholder from "../../assets/avatar_placeholder.png";
 
-export const Avatar = styled.div`
-  width: 300px;
-  height: 300px;
-  background-image: url(${placeholder});
+export const AvatarImage = styled.img.attrs(({ avatarUrl }) => ({
+  src: avatarUrl || placeholder,
+}))`
+  display: flex;
+  flex: 1;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
+  color: #fff;
 `;
