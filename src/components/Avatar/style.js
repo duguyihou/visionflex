@@ -12,4 +12,9 @@ export const AvatarImage = styled.img.attrs(({ avatarUrl }) => ({
   width: 150px;
   height: 150px;
   color: #fff;
+
+  @media (max-width: 768px) {
+    max-width: 150px;
+    max-height: 150px;
+  }
 `;
