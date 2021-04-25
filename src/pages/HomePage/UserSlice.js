@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const userInfoSlice = createSlice({
   name: "userInfo",
   initialState: {
-    firstName: "user",
-    lastName: "name",
-    dob: "04/23/2021",
-    gender: "male",
+    firstName: "",
+    lastName: "",
+    dob: "",
+    gender: "",
     avatarUrl: null,
   },
   reducers: {
